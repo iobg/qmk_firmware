@@ -22,7 +22,16 @@ enum planck_keycodes {
   PLOVER,
   BACKLIT,
   EXT_PLV,
-  SHRUG // ¯\_(ツ)_/¯
+  SHRUG, // ¯\_(ツ)_/¯
+  TFLIP,  // (╯°□°)╯︵ ┻━┻
+  DENKO,   // (´・ω・｀)
+  DPOINT, // (ಠ_ಠ)
+  STRUT,   // ᕕ( ᐛ )ᕗ
+  ORZ, //  orz
+  JOY, // ╰(▔∀▔)╯
+  FING, //  凸(￣ヘ￣)
+  PAIN, //  _:(´ཀ`」 ∠):_
+  LENN, // ( ͡° ͜ʖ ͡°)  
 };
 
 // Fillers to make layering more clear
@@ -91,20 +100,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* fn
   * ,-----------------------------------------------------------------------------------.
-  * |DelWrd|  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  | F10  | Del  |
+  * |DelWrd|Shrug |Dpoint| Tflip| Denko| Strut| ORZ  | Joy  | Fing | Pain | LENN |  Del |
   * |------+------+------+------+------+-------------+------+------+------+------+------|
-  * |      |  F11 |  F12 |      |      |      |      |      |      |      |      |      |
+  * |      |      |      |      |      |      |      |      |      |      |      |      |
   * |------+------+------+------+------+------|------+------+------+------+------+------|
-  * |  |¯\_(ツ)_/¯|      |      |      |      |      |      |      |      |      | Enter|
+  * |  F1  |  F2  |  F3  |  F4  |   F5 |  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |
   * |------+------+------+------+------+------+------+------+------+------+------+------|
-  * |      |      |      |      |      |    Space    |      |      |      |      |      |
+  * |      |      |      |      |      |    Space    |      |      |      |      | Enter|
   * `-----------------------------------------------------------------------------------'
   */
   [_FN] = LAYOUT_planck_grid(
-      LALT(KC_BSPC),  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,    KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL, 
-      XXXXXXX,        KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
-      XXXXXXX,        SHRUG, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
-      XXXXXXX,        _______, XXXXXXX, XXXXXXX, XXXXXXX,  KC_SPC,   KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+      LALT(KC_BSPC),  SHRUG,    DPOINT  , TFLIP   , DENKO   , STRUT    , ORZ    , JOY   , FING  ,  PAIN  ,  LENN  ,  KC_DEL, 
+      XXXXXXX,       XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
+      KC_F1,         KC_F2,    KC_F3,    KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12, 
+      XXXXXXX,  _______, XXXXXXX, XXXXXXX, XXXXXXX,  KC_SPC,   KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MT(MOD_LSFT, KC_ENT)
   ),
 
 
@@ -277,9 +286,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         send_unicode_string("¯\\_(ツ)_/¯");
       }
       return true;
+    case DPOINT:
+      if (record->event.pressed) {
+        send_unicode_string("(ಠ_ಠ)");
+      }
+      return true;
+    case DENKO:
+      if (record->event.pressed) {
+        send_unicode_string("(´・ω・｀)");
+      }
+      return true;
+    case STRUT:
+      if (record->event.pressed) {
+        send_unicode_string("ᕕ( ᐛ )ᕗ");
+      }
+      return true;
+    case TFLIP:
+      if (record->event.pressed) {
+        send_unicode_string("(╯°□°)╯︵ ┻━┻");
+      }
+      return true;
+    case ORZ:
+      if (record->event.pressed) {
+        send_string("orz");
+      }
+      return true;
+    case JOY:
+      if (record->event.pressed) {
+        send_unicode_string("╰(▔∀▔)╯");
+      }
+      return true;
+    case FING:
+      if (record->event.pressed) {
+        send_unicode_string("凸(￣ヘ￣)");
+      }
+      return true;
+    case PAIN:
+      if (record->event.pressed) {
+        send_unicode_string("_:(´ཀ`」 ∠):_");
+      }
+      return true;
+    case LENN:
+      if (record->event.pressed) {
+        send_unicode_string("( ͡° ͜ʖ ͡°) ");
+      }
+      return true;
   }
   return true;
 }
+  
+
 
 bool muse_mode = false;
 uint8_t last_muse_note = 0;

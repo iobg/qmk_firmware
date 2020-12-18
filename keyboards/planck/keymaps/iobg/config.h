@@ -1,6 +1,5 @@
 #pragma once
 
-
 #define UNICODE_SELECTED_MODES UC_WINC, UC_LNX, UC_MAC
 
 #ifdef AUDIO_ENABLE
