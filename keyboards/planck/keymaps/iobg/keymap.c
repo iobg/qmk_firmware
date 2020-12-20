@@ -33,7 +33,7 @@ enum planck_keycodes {
   PAIN, //  _:(´ཀ`」 ∠):_
   LENN, // ( ͡° ͜ʖ ͡°)  
   STFU // shut the fuck up just shut the fuck up shut the fuck up
-
+}
 // Fillers to make layering more clear
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
