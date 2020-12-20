@@ -32,8 +32,7 @@ enum planck_keycodes {
   FING, //  凸(￣ヘ￣)
   PAIN, //  _:(´ཀ`」 ∠):_
   LENN, // ( ͡° ͜ʖ ͡°)  
-  STFU // https://cdn.discordapp.com/attachments/739637904623665162/750521214350393434/FB_IMG_1598207862864-1.jpg
-};
+  STFU // shut the fuck up just shut the fuck up shut the fuck up
 
 // Fillers to make layering more clear
 #define LOWER MO(_LOWER)
@@ -314,7 +313,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return true;
     case STFU:
       if (record->event.pressed) {
-        send_string("https://discord.com/channels/@me/739637904623665162/790068942919827467");
+        send_string("https://media.discordapp.net/attachments/739637904623665162/750521214350393434/FB_IMG_1598207862864-1.jpg");
       }
       return true;
     case JOY:
