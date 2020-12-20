@@ -32,6 +32,7 @@ enum planck_keycodes {
   FING, //  凸(￣ヘ￣)
   PAIN, //  _:(´ཀ`」 ∠):_
   LENN, // ( ͡° ͜ʖ ͡°)  
+  STFU // https://cdn.discordapp.com/attachments/739637904623665162/750521214350393434/FB_IMG_1598207862864-1.jpg
 };
 
 // Fillers to make layering more clear
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * ,-----------------------------------------------------------------------------------.
   * |DelWrd|Shrug |Dpoint| Tflip| Denko| Strut| ORZ  | Joy  | Fing | Pain | LENN |  Del |
   * |------+------+------+------+------+-------------+------+------+------+------+------|
-  * |      |      |      |      |      |      |      |      |      |      |      |      |
+  * | STFU |      |      |      |      |      |      |      |      |      |      |      |
   * |------+------+------+------+------+------|------+------+------+------+------+------|
   * |  F1  |  F2  |  F3  |  F4  |   F5 |  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |
   * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -309,6 +310,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ORZ:
       if (record->event.pressed) {
         send_string("orz");
+      }
+      return true;
+    case STFU:
+      if (record->event.pressed) {
+        send_string("https://discord.com/channels/@me/739637904623665162/790068942919827467");
       }
       return true;
     case JOY:
