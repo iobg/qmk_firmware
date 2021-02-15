@@ -5,8 +5,8 @@ extern keymap_config_t keymap_config;
 
 enum planck_layers {
   _QWERTY,
+  _DJMAX,
   _COLEMAK,
-  _DVORAK,
   _LOWER,
   _RAISE,
   _PLOVER,
@@ -18,7 +18,7 @@ enum planck_layers {
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
-  DVORAK,
+  DJMAX,
   PLOVER,
   BACKLIT,
   EXT_PLV,
@@ -139,9 +139,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Adjust (Lower + Raise)
   * ,-----------------------------------------------------------------------------------.
-  * | Reset|Qwerty|      |      |      |      |      |      |      |MIDIof|MIDIon|  Del |
+  * | Reset|Qwerty|DJMAX |      |      |      |      |      |      |MIDIof|MIDIon|  Del |
   * |------+------+------+------+------+-------------+------+------+------+------+------|
-  * |      |      |      |Dvorak|      |AGnorm|AGswap|      |      |Audoff|Aud on|      |
+  * |      |      |      |      |      |AGnorm|AGswap|      |      |Audoff|Aud on|      |
   * |------+------+------+------+------+------|------+------+------+------+------+------|
   * |      |      |      |Colemk|      |      |      |      |      |Musoff|Mus on|      |
   * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -149,8 +149,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * `-----------------------------------------------------------------------------------'
   */
   [_ADJUST] = LAYOUT_planck_grid(
-      RESET,   QWERTY,  XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   MI_OFF,   MI_ON,   KC_DEL,
-      XXXXXXX, XXXXXXX, XXXXXXX,   DVORAK,    XXXXXXX,  AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX,   AU_OFF,   AU_ON,   XXXXXXX,
+      RESET,   QWERTY,  DJMAX,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   MI_OFF,   MI_ON,   KC_DEL,
+      XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,    XXXXXXX,  AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX,   AU_OFF,   AU_ON,   XXXXXXX,
       XXXXXXX, XXXXXXX, XXXXXXX,   COLEMAK,   XXXXXXX,  XXXXXXX, XXXXXXX, TERM_ON, TERM_OFF,  MU_OFF,   MU_ON,   XXXXXXX,
       PLOVER,  XXXXXXX, XXXXXXX,   XXXXXXX,   _______,  XXXXXXX, XXXXXXX, _______, XXXXXXX,   MUV_DE,   MUV_IN,  XXXXXXX
   ),
@@ -175,22 +175,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 
-  /* Dvorak
+  /* DJMAX
   * ,-----------------------------------------------------------------------------------.
-  * | Tab  |   "  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
+  * | Tab  |   Q  |   W  |   E  |      |      |      |      |   I  |  O   |  P   | Bksp |
   * |------+------+------+------+------+-------------+------+------+------+------+------|
-  * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
+  * |LSHIFT|   A  |   S  |   D  |      |      |      |      |   K  |  L   |   ;  |RSHIFT|
   * |------+------+------+------+------+------|------+------+------+------+------+------|
-  * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
+  * | ESC  |LSHIFT|      |      |      |      |      |      |      |      |RSHIFT| Enter|
   * |------+------+------+------+------+------+------+------+------+------+------+------|
-  * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+  * | Ctrl | FN   |LOWER |RAISE | LAlt |      |      | RAlt| Left | Down |  Up  |Right  |
   * `-----------------------------------------------------------------------------------'
   */
-  [_DVORAK] = LAYOUT_planck_grid(
-      KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC,
-      KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
-      KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    MT(MOD_LSFT, KC_ENT),
-      BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  [_DJMAX] = LAYOUT_planck_grid(
+      KC_TAB,  KC_Q,    KC_W,    KC_E,    XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+      KC_LSFT,  KC_A,    KC_S,    KC_D,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_K,    KC_L,    KC_SCLN,   KC_RSFT,
+      KC_ESC, KC_LSFT, XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_RSFT, KC_ENT,
+      KC_LCTL, FN, LOWER, RAISE, KC_LALT, XXXXXXX  , XXXXXXX ,  KC_RALT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 
@@ -230,14 +230,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         set_single_persistent_default_layer(_QWERTY);
       }
       return true;
+    case DJMAX:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_DJMAX);
+      }
+      return true;
     case COLEMAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
-      }
-      return true;
-    case DVORAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_DVORAK);
       }
       return true;
     case BACKLIT:
