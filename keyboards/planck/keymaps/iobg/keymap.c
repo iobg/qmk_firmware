@@ -51,14 +51,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |------+------+------+------+------+------|------+------+------+------+------+------|
   * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
   * |------+------+------+------+------+------+------+------+------+------+------+------|
-  * | Ctrl |  FN  | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+  * | Ctrl |  FN  | Alt  | GUI  |Lower | Space|SPC/MS|Raise | Left | Down |  Up  |Right |
   * `-----------------------------------------------------------------------------------'
   */
   [_QWERTY] = LAYOUT_planck_grid(
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,      KC_Y,      KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
       KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,      KC_H,      KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,      KC_N,      KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_ENT),
-      KC_LCTL, FN,      KC_LALT, KC_LGUI, LOWER,   SPACE_FN,  SPACE_FN,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+      KC_LCTL, FN,      KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 
@@ -120,19 +120,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Space fn
   * ,-----------------------------------------------------------------------------------.
-  * |PRNT SC|      |  UP  |      |      |      |      |      |      |      |      |SLEEP |
+  * |PRNT SC|      |      |      |      |      |      |      |MOUSEU|      |      |SLEEP |
   * |-------+------+------+------+------+-------------+------+------+------+------+------|
-  * |       | LEFT | DOWN | RIGHT|      |      |      | LEFT | DOWN |  UP  | RIGHT|      |
+  * |       |      |      |LClick|RClick|      |      |MOUSEL|MOUSED|MOUSER|SCRLU |      |
   * |-------+------+------+------+------+------|------+------+------+------+------+------| 
-  * | SHIFT |      |      |      |      |      |      |      |      | HOME | END  |      |
+  * |       |      |      |      |      |      |      |      |      |      |SCRLD |      |
   * |-------+------+------+------+------+------+------+------+------+------+------+------|
   * |       |      |      |      |      |             |      | MUTE |VOLDWN|VOL UP|      |
   * `-----------------------------------------------------------------------------------'
   */
   [_SPACE_FN] = LAYOUT_planck_grid(
-      KC_PSCR,  XXXXXXX, KC_UP,    XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,     XXXXXXX,    KC_SLEP, 
-      XXXXXXX,  KC_LEFT, KC_DOWN,  KC_RIGHT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT, KC_DOWN,  KC_UP,       KC_RIGHT,   XXXXXXX, 
-      KC_LSHIFT,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  KC_HOME,     KC_END,    XXXXXXX, 
+      KC_PSCR,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, KC_MS_U,  XXXXXXX,     XXXXXXX,    KC_SLEP, 
+      XXXXXXX,  XXXXXXX, XXXXXXX,  KC_BTN1,  KC_BTN2,  XXXXXXX,  XXXXXXX,  KC_MS_L, KC_MS_D,  KC_MS_R,       KC_MS_WH_UP, XXXXXXX , 
+      XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,     KC_MS_WH_DOWN,  XXXXXXX  , 
       XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  _______,  _______,  XXXXXXX, KC__MUTE, KC__VOLDOWN, KC__VOLUP,  XXXXXXX
   ),
 
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       RESET,   QWERTY,  DJMAX,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   MI_OFF,   MI_ON,   KC_DEL,
       XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,    XXXXXXX,  AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX,   AU_OFF,   AU_ON,   XXXXXXX,
       XXXXXXX, XXXXXXX, XXXXXXX,   COLEMAK,   XXXXXXX,  XXXXXXX, XXXXXXX, TERM_ON, TERM_OFF,  MU_OFF,   MU_ON,   XXXXXXX,
-      PLOVER,  XXXXXXX, XXXXXXX,   XXXXXXX,   _______,  XXXXXXX, XXXXXXX, _______, XXXXXXX,   MUV_DE,   MUV_IN,  XXXXXXX
+      PLOVER,  RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD,  MUV_DE,   MUV_IN,  XXXXXXX
   ),
 
 
@@ -181,16 +181,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |------+------+------+------+------+-------------+------+------+------+------+------|
   * |LSHIFT|   A  |   S  |   D  |      |      |      |      |   K  |  L   |   ;  |RSHIFT|
   * |------+------+------+------+------+------|------+------+------+------+------+------|
-  * | ESC  |LSHIFT|      |      |      |      |      |      |      |      |RSHIFT| Enter|
+  * |LSHIFT|      |      |      |      |      |      |      |      |      |      |RSHIFT|
   * |------+------+------+------+------+------+------+------+------+------+------+------|
-  * | Ctrl | FN   |LOWER |RAISE | LAlt |      |      | RAlt| Left | Down |  Up  |Right  |
+  * | Ctrl | FN   |LOWER |RAISE | LAlt | ESC  |Enter | H    | Left | Down |  Up  |Right  |
   * `-----------------------------------------------------------------------------------'
   */
   [_DJMAX] = LAYOUT_planck_grid(
       KC_TAB,  KC_Q,    KC_W,    KC_E,    XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,    KC_I,    KC_O,    KC_P,    KC_BSPC,
       KC_LSFT,  KC_A,    KC_S,    KC_D,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_K,    KC_L,    KC_SCLN,   KC_RSFT,
-      KC_ESC, KC_LSFT, XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_RSFT, KC_ENT,
-      KC_LCTL, FN, LOWER, RAISE, KC_LALT, XXXXXXX  , XXXXXXX ,  KC_RALT,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+      KC_LSFT, XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,XXXXXXX ,KC_RSFT,
+      KC_LCTL, FN, LOWER, RAISE, KC_LALT, KC_ESC  , KC_ENT ,  KC_H,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 

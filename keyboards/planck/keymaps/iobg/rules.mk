@@ -1,3 +1,3 @@
 SRC += muse.c
 UNICODE_ENABLE = yes
-
+MOUSEKEY_ENABLE = yes

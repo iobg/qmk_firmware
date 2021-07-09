@@ -1,5 +1,5 @@
 #pragma once
-
+#define MK_3_SPEED
 #define UNICODE_SELECTED_MODES UC_WINC, UC_LNX, UC_MAC
 
 #ifdef AUDIO_ENABLE
@@ -24,6 +24,12 @@
 */
 
 #define MIDI_BASIC
+
+#define MK_C_OFFSET_0 32
+
+#define MK_C_INTERVAL_0 16                                
+
+
 
 /* enable advanced MIDI features:
    - MIDI notes can be added to the keymap
